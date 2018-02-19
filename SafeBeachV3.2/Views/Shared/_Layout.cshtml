@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - Safe Beach</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Great+Vibes" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/myScript.js")
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiVWz5ml0kAOQ65sB-pNzO6MG_TZmCMKg&callback=initMap"></script>
+    <script id="dsq-count-scr" src="//safebeach.disqus.com/count.js" async></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <span class="navbar-brand-text brandtext">Safe Beach</span>
+                    <span class="navbar-brand-text brandtext2">&nbsp;&nbsp;&nbsp;Explore Victorian beaches</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="brandtext3" href="@Url.Action("Index", "Home")">Home <i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a class="brandtext3" href="@Url.Action("Recommend", "Home")">Recommended Beaches <i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="dropdown brandtext3">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Safety Tips <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Tips1", "Home")">Rip Current <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a></li>
+                            <li><a href="@Url.Action("Tips2", "Home")">First Aid <i class="fa fa-medkit" aria-hidden="true"></i></a></li>
+                            <li><a href="@Url.Action("Tips3", "Home")">Flags and Signs <i class="fa fa-flag" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="brandtext3" href="@Url.Action("About", "Home")">About Us <i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+    <hr />
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p style="font-family:Open Sans;">Copyright &copy; Safe Beach 2017</p>
+        </div>
+    </footer>
+</body>
+</html>

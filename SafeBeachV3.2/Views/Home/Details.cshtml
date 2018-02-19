@@ -1,0 +1,151 @@
+﻿@model SafeBeachV3._2.Models.BeachInfoV3_1
+
+@{
+    ViewBag.Title = "Beach Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <!-- Portfolio Item Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header" style="font-family:Great Vibes;">
+                @Html.DisplayFor(model => model.beachName)
+            </h1>
+            <div class="panel panel-danger">
+                <div class="panel-heading">Warning Message  <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></div>
+                <div class="panel-body">
+                    <div id="warningMessage1">
+                        None
+                    </div>
+                    <div id="warningMessage2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Portfolio Item Row -->
+    <div class="row" style="font-family:Open Sans;">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/img/@String.Format("{0}.jpg",Model.beachID)" alt="">
+        </div>
+        <div class="col-md-6">
+            <h3>Safety Details</h3>
+            <ul>
+                <li>Address: @Html.DisplayFor(model => model.beachAddress)</li>
+                <li>Patrol Availability: @Html.DisplayFor(model => model.patrolTime)</li>
+                <li>Drowning Incidents: @Html.DisplayFor(model => model.drowning)</li>
+                <li>Water Quality: @Html.DisplayFor(model => model.waterQuality)<br />Note: In the event of a storm or heavy rain, the water quality will degrade to poor or very poor within 2 days.</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Related Projects Row -->
+    <div class="row" style="font-family:Open Sans;">
+        <div class="col-md-6">
+            <h3 class="page-header">Weather</h3>
+            <!--Weatherzone local weather-->
+            <style type="text/css">
+                .weatherzone {
+                    font-family: Tahoma, Arial, Sans-Serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #323232;
+                    background-color: #EFEFEF;
+                }
+
+                .weatherzone_head {
+                    font-family: Tahoma, Arial, Sans-Serif;
+                    font-size: small;
+                    font-weight: bold;
+                    text-align: center;
+                    color: #EFEFEF;
+                    background-color: #4185A5;
+                }
+            </style>
+            <div class="video-container">
+                <script type="text/javascript" src="https://www.weatherzone.com.au/woys/page_local.jsp?postcode=@Html.DisplayFor(model => model.postcode)"></script>
+            </div>
+            <!--end Weatherzone local weather-->
+        </div>
+        <div class="col-md-6">
+            <h3 class="page-header">Map</h3>
+            <style type="text/css">
+                #mapid2 {
+                    height: 495px;
+                }
+            </style>
+            <div id="mapid2"></div>
+        </div>
+    </div>
+    <div class="row" style="font-family:Open Sans;">
+        <div class="col-lg-12">
+            <h3 class="page-header">Comments</h3>
+        </div>
+        <div class="col-sm-12">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var h = document.getElementById("warningMessage1");
+        var i = document.getElementById("warningMessage2");
+        var s1 = "";
+        var s2 = "";
+        if ("@Html.DisplayFor(model => model.surfLevel)" == "High") {
+            s1 = s1 + "<img src=\"/Content/img/wave2.jpg\" alt=\"Lights\">";
+            s2 = s2 + "This beach has been recorded to have daunting waves.<br/>";
+        }
+        if ("@Html.DisplayFor(model => model.surfLevel)" == "Medium") {
+            s1 = s1 + "<img src=\"/Content/img/wave1.jpg\" alt=\"Lights\">";
+            s2 = s2 + "This beach has been recorded to have medium sized waves that are good for surfing but not suitable for someone who’s not a proficient swimmer.<br/>";
+        }
+        if ("@Html.DisplayFor(model => model.patrol)" == "No") {
+            s1 = s1 + "<img src=\"/Content/img/danger1.jpg\" alt=\"Lights\">";
+            s2 = s2 + "This beach is not patrolled. Keep Safe!<br/>";
+        }
+        if ("@Html.DisplayFor(model => model.drowning)" != "None in last three years") {
+            s1 = s1 + "<img src=\"/Content/img/danger2.jpg\" alt=\"Lights\">";
+            s2 = s2 + "This beach has had at least one drowning incident in the past 3 years. Proceed with safety measures in place!<br/>";
+        }
+        if (s1) {
+            h.innerHTML = s1;
+            i.innerHTML = s2;
+        }
+    })
+</script>
+
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script>
+    var mymap = L.map('mapid2').setView([@Html.DisplayFor(model => model.latitude), @Html.DisplayFor(model => model.longitude)], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1Ijoid2F5bmVoZSIsImEiOiJjajB5dWw4dDcwMmUzMndtdGZrZnExcmwxIn0.SWEhrOhz8ViYo6qAaYE3Jw'
+    }).addTo(mymap);
+    var marker = L.marker([@Html.DisplayFor(model => model.latitude), @Html.DisplayFor(model => model.longitude)]).addTo(mymap);
+</script>
+
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://safebeach.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

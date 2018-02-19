@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BeachInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BeachInfoV3_1">
+          <Key>
+            <PropertyRef Name="beachID" />
+          </Key>
+          <Property Name="beachID" Type="float" Nullable="false" />
+          <Property Name="beachName" Type="nvarchar" MaxLength="255" />
+          <Property Name="beachAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="region" Type="nvarchar" MaxLength="255" />
+          <Property Name="beachSuburb" Type="nvarchar" MaxLength="255" />
+          <Property Name="postcode" Type="float" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="patrol" Type="nvarchar" MaxLength="255" />
+          <Property Name="patrolTime" Type="nvarchar" MaxLength="255" />
+          <Property Name="surfLevel" Type="nvarchar" MaxLength="255" />
+          <Property Name="swimLevel" Type="nvarchar" MaxLength="255" />
+          <Property Name="drowning" Type="nvarchar" MaxLength="255" />
+          <Property Name="waterQuality" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="BeachInfoModelStoreContainer">
+          <EntitySet Name="BeachInfoV3_1" EntityType="Self.BeachInfoV3_1" Schema="dbo" Table="BeachInfoV3.1" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BeachInfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BeachInfoV3_1">
+          <Key>
+            <PropertyRef Name="beachID" />
+          </Key>
+          <Property Name="beachID" Type="Double" Nullable="false" />
+          <Property Name="beachName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="beachAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="beachSuburb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="postcode" Type="Double" />
+          <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="patrol" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="patrolTime" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="surfLevel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="swimLevel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drowning" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="waterQuality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="BeachInfoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BeachInfoV3_1" EntityType="Self.BeachInfoV3_1" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BeachInfoModelStoreContainer" CdmEntityContainer="BeachInfoEntities">
+          <EntitySetMapping Name="BeachInfoV3_1">
+            <EntityTypeMapping TypeName="BeachInfoModel.BeachInfoV3_1">
+              <MappingFragment StoreEntitySet="BeachInfoV3_1">
+                <ScalarProperty Name="beachID" ColumnName="beachID" />
+                <ScalarProperty Name="beachName" ColumnName="beachName" />
+                <ScalarProperty Name="beachAddress" ColumnName="beachAddress" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="beachSuburb" ColumnName="beachSuburb" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="patrol" ColumnName="patrol" />
+                <ScalarProperty Name="patrolTime" ColumnName="patrolTime" />
+                <ScalarProperty Name="surfLevel" ColumnName="surfLevel" />
+                <ScalarProperty Name="swimLevel" ColumnName="swimLevel" />
+                <ScalarProperty Name="drowning" ColumnName="drowning" />
+                <ScalarProperty Name="waterQuality" ColumnName="waterQuality" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

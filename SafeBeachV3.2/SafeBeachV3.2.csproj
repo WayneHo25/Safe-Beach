@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CCFA50EA-7745-46A8-A3B5-19D083B5A2A7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SafeBeachV3._2</RootNamespace>
+    <AssemblyName>SafeBeachV3.2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BeachInfoV3_1Controller.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeachInfo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeachInfo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeachInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeachInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeachInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeachInfo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeachInfoV3_1.cs">
+      <DependentUpon>BeachInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\1.jpg" />
+    <Content Include="Content\img\10.jpg" />
+    <Content Include="Content\img\100.jpg" />
+    <Content Include="Content\img\101.jpg" />
+    <Content Include="Content\img\102.jpg" />
+    <Content Include="Content\img\103.jpg" />
+    <Content Include="Content\img\104.jpg" />
+    <Content Include="Content\img\105.jpg" />
+    <Content Include="Content\img\106.jpg" />
+    <Content Include="Content\img\107.jpg" />
+    <Content Include="Content\img\108.jpg" />
+    <Content Include="Content\img\109.jpg" />
+    <Content Include="Content\img\11.jpg" />
+    <Content Include="Content\img\110.jpg" />
+    <Content Include="Content\img\111.jpg" />
+    <Content Include="Content\img\112.jpg" />
+    <Content Include="Content\img\113.JPG" />
+    <Content Include="Content\img\114.jpg" />
+    <Content Include="Content\img\115.jpg" />
+    <Content Include="Content\img\116.jpg" />
+    <Content Include="Content\img\117.jpg" />
+    <Content Include="Content\img\118.jpg" />
+    <Content Include="Content\img\119.jpg" />
+    <Content Include="Content\img\12.jpg" />
+    <Content Include="Content\img\120.jpg" />
+    <Content Include="Content\img\121.jpg" />
+    <Content Include="Content\img\122.jpg" />
+    <Content Include="Content\img\123.jpg" />
+    <Content Include="Content\img\124.jpg" />
+    <Content Include="Content\img\125.jpg" />
+    <Content Include="Content\img\126.jpg" />
+    <Content Include="Content\img\127.jpg" />
+    <Content Include="Content\img\128.jpg" />
+    <Content Include="Content\img\129.jpg" />
+    <Content Include="Content\img\13.jpg" />
+    <Content Include="Content\img\130.jpg" />
+    <Content Include="Content\img\131.jpg" />
+    <Content Include="Content\img\132.jpg" />
+    <Content Include="Content\img\133.jpg" />
+    <Content Include="Content\img\134.jpg" />
+    <Content Include="Content\img\135.jpg" />
+    <Content Include="Content\img\136.jpg" />
+    <Content Include="Content\img\137.jpg" />
+    <Content Include="Content\img\138.jpg" />
+    <Content Include="Content\img\139.jpg" />
+    <Content Include="Content\img\14.jpg" />
+    <Content Include="Content\img\140.jpg" />
+    <Content Include="Content\img\141.jpg" />
+    <Content Include="Content\img\142.jpg" />
+    <Content Include="Content\img\143.jpg" />
+    <Content Include="Content\img\144.jpg" />
+    <Content Include="Content\img\145.jpg" />
+    <Content Include="Content\img\146.jpg" />
+    <Content Include="Content\img\147.jpg" />
+    <Content Include="Content\img\148.jpg" />
+    <Content Include="Content\img\149.jpg" />
+    <Content Include="Content\img\15.jpg" />
+    <Content Include="Content\img\150.jpg" />
+    <Content Include="Content\img\151.jpg" />
+    <Content Include="Content\img\152.jpg" />
+    <Content Include="Content\img\153.jpg" />
+    <Content Include="Content\img\154.jpg" />
+    <Content Include="Content\img\155.jpg" />
+    <Content Include="Content\img\156.jpg" />
+    <Content Include="Content\img\157.jpg" />
+    <Content Include="Content\img\158.jpg" />
+    <Content Include="Content\img\159.jpg" />
+    <Content Include="Content\img\16.jpg" />
+    <Content Include="Content\img\160.jpg" />
+    <Content Include="Content\img\161.jpg" />
+    <Content Include="Content\img\162.jpg" />
+    <Content Include="Content\img\163.jpg" />
+    <Content Include="Content\img\164.jpg" />
+    <Content Include="Content\img\165.jpg" />
+    <Content Include="Content\img\166.jpg" />
+    <Content Include="Content\img\167.jpg" />
+    <Content Include="Content\img\168.jpg" />
+    <Content Include="Content\img\169.jpg" />
+    <Content Include="Content\img\17.jpg" />
+    <Content Include="Content\img\170.jpg" />
+    <Content Include="Content\img\171.jpg" />
+    <Content Include="Content\img\172.jpg" />
+    <Content Include="Content\img\173.JPG" />
+    <Content Include="Content\img\174.JPG" />
+    <Content Include="Content\img\18.jpg" />
+    <Content Include="Content\img\19.jpg" />
+    <Content Include="Content\img\2.jpg" />
+    <Content Include="Content\img\20.jpg" />
+    <Content Include="Content\img\21.jpg" />
+    <Content Include="Content\img\22.jpg" />
+    <Content Include="Content\img\23.jpg" />
+    <Content Include="Content\img\24.jpg" />
+    <Content Include="Content\img\25.jpg" />
+    <Content Include="Content\img\26.jpg" />
+    <Content Include="Content\img\27.jpg" />
+    <Content Include="Content\img\28.jpg" />
+    <Content Include="Content\img\29.jpg" />
+    <Content Include="Content\img\3.jpg" />
+    <Content Include="Content\img\30.jpg" />
+    <Content Include="Content\img\31.jpg" />
+    <Content Include="Content\img\32.jpg" />
+    <Content Include="Content\img\33.jpg" />
+    <Content Include="Content\img\34.jpg" />
+    <Content Include="Content\img\35.jpg" />
+    <Content Include="Content\img\36.jpg" />
+    <Content Include="Content\img\37.jpg" />
+    <Content Include="Content\img\38.jpg" />
+    <Content Include="Content\img\39.jpg" />
+    <Content Include="Content\img\4.jpg" />
+    <Content Include="Content\img\40.jpg" />
+    <Content Include="Content\img\41.jpg" />
+    <Content Include="Content\img\42.jpg" />
+    <Content Include="Content\img\43.jpg" />
+    <Content Include="Content\img\44.jpg" />
+    <Content Include="Content\img\45.jpg" />
+    <Content Include="Content\img\46.jpg" />
+    <Content Include="Content\img\47.jpg" />
+    <Content Include="Content\img\48.jpg" />
+    <Content Include="Content\img\49.jpg" />
+    <Content Include="Content\img\5.jpg" />
+    <Content Include="Content\img\50.jpg" />
+    <Content Include="Content\img\51.jpg" />
+    <Content Include="Content\img\52.jpg" />
+    <Content Include="Content\img\53.jpg" />
+    <Content Include="Content\img\54.jpg" />
+    <Content Include="Content\img\55.jpg" />
+    <Content Include="Content\img\56.jpg" />
+    <Content Include="Content\img\57.jpg" />
+    <Content Include="Content\img\58.jpg" />
+    <Content Include="Content\img\59.jpg" />
+    <Content Include="Content\img\6.jpg" />
+    <Content Include="Content\img\60.jpg" />
+    <Content Include="Content\img\61.jpg" />
+    <Content Include="Content\img\62.jpg" />
+    <Content Include="Content\img\63.jpg" />
+    <Content Include="Content\img\64.jpg" />
+    <Content Include="Content\img\65.jpg" />
+    <Content Include="Content\img\66.jpg" />
+    <Content Include="Content\img\67.jpg" />
+    <Content Include="Content\img\68.jpg" />
+    <Content Include="Content\img\69.jpg" />
+    <Content Include="Content\img\7.jpg" />
+    <Content Include="Content\img\70.jpg" />
+    <Content Include="Content\img\71.jpg" />
+    <Content Include="Content\img\72.jpg" />
+    <Content Include="Content\img\73.jpg" />
+    <Content Include="Content\img\74.jpg" />
+    <Content Include="Content\img\75.jpg" />
+    <Content Include="Content\img\76.jpg" />
+    <Content Include="Content\img\77.jpg" />
+    <Content Include="Content\img\78.jpg" />
+    <Content Include="Content\img\79.jpg" />
+    <Content Include="Content\img\8.jpg" />
+    <Content Include="Content\img\80.jpg" />
+    <Content Include="Content\img\81.jpg" />
+    <Content Include="Content\img\82.jpg" />
+    <Content Include="Content\img\83.jpg" />
+    <Content Include="Content\img\84.jpg" />
+    <Content Include="Content\img\85.jpg" />
+    <Content Include="Content\img\86.jpg" />
+    <Content Include="Content\img\87.jpg" />
+    <Content Include="Content\img\88.jpg" />
+    <Content Include="Content\img\89.jpg" />
+    <Content Include="Content\img\9.jpg" />
+    <Content Include="Content\img\90.jpg" />
+    <Content Include="Content\img\91.jpg" />
+    <Content Include="Content\img\92.jpg" />
+    <Content Include="Content\img\93.jpg" />
+    <Content Include="Content\img\94.jpg" />
+    <Content Include="Content\img\95.jpg" />
+    <Content Include="Content\img\96.jpg" />
+    <Content Include="Content\img\97.jpg" />
+    <Content Include="Content\img\98.JPG" />
+    <Content Include="Content\img\99.jpg" />
+    <Content Include="Content\img\About1.jpg" />
+    <Content Include="Content\img\About2.jpg" />
+    <Content Include="Content\img\About3.jpg" />
+    <Content Include="Content\img\About4.jpg" />
+    <Content Include="Content\img\danger1.jpg" />
+    <Content Include="Content\img\danger2.jpg" />
+    <Content Include="Content\img\flag2.gif" />
+    <Content Include="Content\img\flag3.gif" />
+    <Content Include="Content\img\flag4.gif" />
+    <Content Include="Content\img\flag1.gif" />
+    <Content Include="Content\img\sign1.png" />
+    <Content Include="Content\img\sign2.png" />
+    <Content Include="Content\img\sign3.png" />
+    <Content Include="Content\img\sign4.png" />
+    <Content Include="Content\img\sign5.png" />
+    <Content Include="Content\img\wave0.jpg" />
+    <Content Include="Content\img\wave1.jpg" />
+    <Content Include="Content\img\wave2.jpg" />
+    <Content Include="Content\portfolio-item.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\BeachInfo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BeachInfo.Context.cs</LastGenOutput>
+      <DependentUpon>BeachInfo.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BeachInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BeachInfo.edmx</DependentUpon>
+      <LastGenOutput>BeachInfo.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\BeachInfo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BeachInfo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BeachInfo.edmx.diagram">
+      <DependentUpon>BeachInfo.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\SafeBeach - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\myScript.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\BeachInfoV3_1\Create.cshtml" />
+    <Content Include="Views\BeachInfoV3_1\Delete.cshtml" />
+    <Content Include="Views\BeachInfoV3_1\Details.cshtml" />
+    <Content Include="Views\BeachInfoV3_1\Edit.cshtml" />
+    <Content Include="Views\BeachInfoV3_1\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Details1.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\SearchNull.cshtml" />
+    <Content Include="Views\Home\Tips1.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Search2.cshtml" />
+    <Content Include="Views\Home\Tips2.cshtml" />
+    <Content Include="Views\Home\Tips3.cshtml" />
+    <Content Include="Views\Home\Search3.cshtml" />
+    <Content Include="Views\Home\Recommend.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53846</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53846/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

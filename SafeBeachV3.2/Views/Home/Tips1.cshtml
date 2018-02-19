@@ -1,0 +1,83 @@
+﻿<!--
+   PROGRAM:   Safe Beach Tips Page
+   AUTHOR:    Wenzhi He
+   LOGON ID:  No Authentication
+   DUE DATE:  07-May-2017
+
+   FUNCTION:  Establishing the tips page of Safe Beach website.
+              1. Telling users some safety knowledge.
+              2. Rip current, first aid and flags and signs information.
+
+   INPUT:     None
+
+   OUTPUT:    None
+
+   NOTES:     this page is using layout html which include a navigation bar and footer.
+-->
+
+<!--
+    The title of the page
+-->
+@{
+    ViewBag.Title = "Safety Tips";
+}
+
+<h1 class="text-center" style="font-size:50px; font-family:Great Vibes;">@ViewBag.Title</h1>
+
+<!--
+    Function: This is the content of tips page.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The font family of header is Great Vibes while the other's is Open Sans.
+           2. I use some youtube videos to display the information.
+-->
+<div class="container">
+    <div class="row" style="font-family:Open Sans;">
+        <!--
+            Display the safety knowledge to users in three sections.
+        -->
+        <div class="col-sm-12">
+            <div id="section1">
+                <h1 class="text-center">Rip Current</h1>
+                <p style="font-size:18px;">
+                    A rip current, often referred to simply as a rip, or by the misnomer rip tide, is a specific kind of water current which can occur near beaches with breaking waves. A rip is a strong, localized, and narrow current of water which moves directly away from the shore, cutting through the lines of breaking waves like a river running out to sea, and is strongest near the surface of the water.<br/><br />
+                    Rip currents can be hazardous to people in the water. Swimmers who are caught in a rip and who do not understand what is going on, and who may not have the necessary water skills, may panic, or exhaust themselves by trying to swim directly against the flow of water. Because of these factors, rips are the leading cause of rescues by lifeguards at beaches, and in the US rips are the cause of an average of 46 deaths by drowning per year.<br/><br />
+                    A rip current is not the same thing as undertow, although some people use the latter term incorrectly when they mean a rip current. Contrary to popular belief, neither rip nor undertow can pull a person down and hold them under the water. A rip simply carries floating objects, including people, out beyond the zone of the breaking waves.<br/><br />
+                    <b>AVOIDING RIP CURRENTS</b><br/><br/>
+                    1. Always swim between the red and yellow flags;<br /><br />
+                    2. Observe all safety signs;<br /><br />
+                    3. Obey all instructions from the surf lifesavers and lifeguards;<br /><br />
+                    4. Understand what a rip current is;<br /><br />
+                    5. Know how to spot rip currents and look for the common signs such as deeper, darker water and fewer breaking waves; <br /><br />
+                    6. Do not swim in or near a rip current.<br /><br />
+                </p>
+                <!--
+                    This style is used to make the youtube video responsive.
+                -->
+                <style type="text/css">
+                    .video-container {
+	                    position:relative;
+	                    padding-bottom:56.25%;
+	                    padding-top:30px;
+	                    height:0;
+	                    overflow:hidden;
+                    }
+
+                    .video-container iframe, .video-container object, .video-container embed {
+	                    position:absolute;
+	                    top:0;
+	                    left:0;
+	                    width:100%;
+	                    height:100%;
+                    }
+                </style>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/LX2o-QpXSso?ecver=2" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

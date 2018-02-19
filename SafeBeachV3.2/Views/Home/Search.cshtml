@@ -1,0 +1,64 @@
+﻿<!--
+   PROGRAM:   Safe Beach Search Result Page
+   AUTHOR:    Wenzhi He
+   LOGON ID:  No Authentication
+   DUE DATE:  07-May-2017
+
+   FUNCTION:  Establishing the search result page of Safe Beach website.
+              1. Listing the searched beaches in a list.
+              2. The picture, name and address of each beach will be display.
+              3. The information about patrol availability and wave height will be display in labels.
+
+   INPUT:     choice of a certain beach
+
+   OUTPUT:    the detail page of a certain beach
+
+   NOTES:     this page is using layout html which include a navigation bar and footer.
+-->
+
+@model IEnumerable<SafeBeachV3._2.Models.BeachInfoV3_1>
+
+<!--
+    The title of the page
+-->
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center" style="font-size:50px; font-family:Great Vibes;">Search Result</h1>
+
+<!--
+    Function: This is a list of searched beaches.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The font family of header is Great Vibes while the other's is Open Sans.
+           2. I use clearfix style to display the information.
+-->
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="span12">
+            <ul class="list-unstyled">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <div class="thumbnail clearfix">
+                            <a href="@Url.Action("Details", "Home", new { id = item.beachID })"><img src="~/Content/img/@Html.DisplayFor(modelItem => item.picturePath)" alt="ALT NAME" class="pull-left span2 clearfix fullwidth" style='margin-right:10px' width="320" height="200"></a>
+                            <div class="caption pull-left span2 clearfix" style="font-family:Open Sans;">
+                                <h4>
+                                    <a href="@Url.Action("Details", "Home", new { id = item.beachID })">@Html.DisplayFor(modelItem => item.beachName)</a>
+                                </h4>
+                                <small><b>@Html.DisplayFor(modelItem => item.beachAddress)</b></small><br /><br />
+                                <span class="label label-primary">Patrol: @Html.DisplayFor(modelItem => item.patrol)</span>
+                                <span class="label label-primary">Wave Height: @Html.DisplayFor(modelItem => item.surfLevel)</span>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<SafeBeachV3._2.Models.BeachInfoV3_1>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.beachName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.beachAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.beachSuburb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patrol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patrolTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.surfLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.swimLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.drowning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.waterQuality)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.beachName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.beachAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.beachSuburb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patrol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patrolTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.surfLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.swimLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.drowning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.waterQuality)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.beachID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.beachID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.beachID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Recommended Beaches";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--
+    Function: This is the recommended beach part for the website which includes nine famous beaches.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The font family of header is Great Vibes while the other's is Open Sans.
+           2. I use thumbnail style to display the picture and beach name.
+-->
+<h1 class="text-center" style="font-size:50px; font-family:Great Vibes;">Recommended Beaches</h1>
+<div class="recomm">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="alert alert-info text-center" style="font-size:16px; font-family:Open Sans;" role="alert">Recommended for swimming</div>
+            <!--
+                The first beach for Swimming
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "27" })">
+                    <img src="~/Content/img/27.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Black Rock</p>
+                    </div>
+                </a>
+            </div>
+            <!--
+                The second beach for Swimming
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "92" })">
+                    <img src="~/Content/img/92.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Frankston Beach</p>
+                    </div>
+                </a>
+            </div>
+            <!--
+                The third beach for Swimming
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "62" })">
+                    <img src="~/Content/img/62.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Altona Beach</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-info text-center" style="font-size:16px; font-family:Open Sans;" role="alert">Recommended for surfing</div>
+            <!--
+                The first beach for Surfing
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "3" })">
+                    <img src="~/Content/img/3.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Torquay Beach</p>
+                    </div>
+                </a>
+            </div>
+            <!--
+                The second beach for Surfing
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "9" })">
+                    <img src="~/Content/img/9.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Bells Beach</p>
+                    </div>
+                </a>
+            </div>
+            <!--
+                The third beach for Surfing
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "13" })">
+                    <img src="~/Content/img/13.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Addiscot Beach</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-info text-center" style="font-size:16px; font-family:Open Sans;" role="alert">Recommended for sightseeing</div>
+            <!--
+                The first beach for Sightseeing
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "69" })">
+                    <img src="~/Content/img/69.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">St Kilda Beach</p>
+                    </div>
+                </a>
+            </div>
+            <!--
+                The second beach for Sightseeing
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "72" })">
+                    <img src="~/Content/img/72.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Brighton Beach</p>
+                    </div>
+                </a>
+            </div>
+            <!--
+                The third beach for Sightseeing
+            -->
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "Home", new { id = "63" })">
+                    <img src="~/Content/img/63.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p style="font-family:Open Sans;">Williamstown Beach</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

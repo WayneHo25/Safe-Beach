@@ -1,0 +1,237 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.brandtext {
+    font-family: Great Vibes; 
+    font-size: 20px;
+}
+
+.brandtext2 {
+    font-family: Open Sans;
+    font-size: 10px;
+}
+
+.brandtext3 {
+    font-family: Open Sans;
+    font-size: 14px;
+}
+
+#mapid {
+        height:500px;
+        height: -moz-calc(100vh - 50px); /* Firefox */
+        height: -webkit-calc(100vh - 50px); /* Chrome, Safari */
+        height: calc(100vh - 50px); /* IE9+ and future browsers */
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        z-index: 1;
+    }
+
+#mapid2 {
+        height:500px;
+        height: -moz-calc(100vh - 50px); /* Firefox */
+        height: -webkit-calc(100vh - 50px); /* Chrome, Safari */
+        height: calc(100vh - 50px); /* IE9+ and future browsers */
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        z-index: 1;
+    }
+
+.video-container {
+    }
+
+.video-container iframe, .video-container object, .video-container embed {
+    }
+
+.hero{
+    position: fixed;
+    top: 50px;
+    width: 100%;
+}
+
+.fontstyle{
+    font-family:Open Sans;
+    color:white;
+}
+
+.recomm{
+
+}
+
+.overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;      
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+.easy-button-container {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.easy-button-button {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.button-state {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.button-state span.fa.fa-search::before {
+    font-size: 24px !important;
+}
+
+.button-state span.fa.fa-flag::before {
+    font-size: 24px !important;
+}
+
+.fullwidth{
+
+}
+
+.fadeout1{
+    display:block;
+}
+
+
+@media (min-width: 768px) {
+        .vertical-align {
+        display: flex;
+        align-items: center;
+    }
+
+        .brandtext {
+        font-family: Great Vibes; 
+        font-size: 25px;
+    }
+
+        .brandtext2 {
+        font-family: Open Sans;
+        font-size: 14px;
+    }
+
+        .brandtext3 {
+        font-family: Open Sans;
+        font-size: 15px;
+    }
+
+    .hero{
+        position: fixed;
+        top: 50px;
+        width: 100%;
+    }
+
+    .fontstyle{
+        font-family:Open Sans;
+        color: white;
+    }
+
+    .recomm{
+
+    }
+
+    .easy-button-container {
+        width: 75px !important;
+        height: 75px !important;
+    }
+
+    .button-state span.fa.fa-search::before {
+        font-size: 36px !important;
+    }
+
+    .button-state span.fa.fa-flag::before {
+        font-size: 36px !important;
+    }
+
+    .fadeout1{
+        display:none;
+    }
+}
+
+@media (max-width: 992px){
+.video-container {
+        position:relative;
+        padding-bottom:85%;
+        padding-right:85%;
+        height:0;
+        overflow:hidden;
+    }
+
+.video-container iframe, .video-container object, .video-container embed {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+
+    .overlay{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 5px;      
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 2;
+        overflow:auto;
+    }
+
+    #mapid {
+        height:500px;
+        height: -moz-calc(100vh - 50px); /* Firefox */
+        height: -webkit-calc(100vh - 50px); /* Chrome, Safari */
+        height: calc(100vh - 50px); /* IE9+ and future browsers */
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        z-index: 1;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .fullwidth{
+        width:100%;
+    }
+
+    #mapid2 {
+        height:500px;
+        height: -moz-calc(100vh - 50px); /* Firefox */
+        height: -webkit-calc(100vh - 50px); /* Chrome, Safari */
+        height: calc(100vh - 50px); /* IE9+ and future browsers */
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-bottom: 0px;
+        z-index: 1;
+    }
+}
+
+

@@ -1,0 +1,587 @@
+﻿<!--
+    PROGRAM:   Safe Beach Home Page
+    AUTHOR:    Wenzhi He
+    LOGON ID:  No Authentication
+    DUE DATE:  07-May-2017
+
+    FUNCTION:  Establishing the homepage of Safe Beach website.
+                1. Map of nine regions of Victoria which include some famous beaches
+                2. Search bar for searching by suburb name, beach name and postcode
+                3. Detecting users' location and input the suburb name automatically
+                4. Search bar for searching by some safety filters
+                5. Listing some recommended beaches at the buttom
+
+    INPUT:     suburb name, beach name, postcode, choice of safety filters, choice of region,
+                choice of recommended beach
+
+    OUTPUT:    search result page of some beaches, seach result page of null, the detail of a certain beach
+
+    NOTES:     this page is using layout html which include a navigation bar and footer.
+-->
+<!--
+    The title of the page
+-->
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<!--
+    Function: This is a jumbotron for the website which includes the header,
+                map of several regions and the search bar.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The font family of header is Great Vibes while the other's is Open Sans.
+            2. I seperate the jumbotron to two columns.
+-->
+<div>
+    <div class="hero">
+        <div id="mapid"></div>
+
+        <div class="overlay" id="flagDiv"  style="display:none;">
+            <button type="button" title="Close" onclick="document.getElementById('flagDiv').style.display='none'" style="position:absolute; top:3; right:0;">
+                <span aria-hidden="true">&times;</span>
+                <span>Close</span>
+            </button>
+            <br /><br/>
+            <div class="row text-center fontstyle">
+                <div class="col-md-3">
+                    <div>
+                        <img src="~/Content/img/flag1.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    </div>
+                    <div id="image1">
+                        Swimming area boundary flag<br/>
+                        游泳区边界旗<br/>
+                        منطقة الحدود علم الحدود<br/>
+                        水上エリア境界フラグ<br/>
+                        स्विमिंग क्षेत्र सीमा ध्वज<br/>
+                        Bandera frontera de la zona de baño<br/>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <img src="~/Content/img/flag2.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    </div>
+                    <div id="image2">
+                        Board riding area boundary flag<br/>
+                        板类运动区边界旗<br/>
+                        لوح، دائرة إنتخابية، دائرة، حد، فلاج<br/>
+                        乗馬エリア境界フラグ<br/>
+                        बोर्ड सवारी क्षेत्र सीमा ध्वज<br/>
+                        Bandera fronteriza del área de montar a bordo<br/>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <img src="~/Content/img/flag3.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    </div>
+                    <div id="image3">
+                        No swimming flag<br/>
+                        禁止游泳<br/>
+                        لا علم السباحة<br/>
+                        水泳旗なし<br/>
+                        कोई स्विमिंग फ्लैग नहीं<br/>
+                        Sin bandera de natación<br/>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <img src="~/Content/img/flag4.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    </div>
+                    <div id="image4">
+                        Shark alarm flag<br/>
+                        鲨鱼警示旗<br/>
+                        علم إنذار سمك القرش<br/>
+                        サメ警報旗<br/>
+                        शार्क अलार्म फ्लैग<br/>
+                        Indicador de alarma de tiburón<br/>
+                    </div>
+                </div>
+            </div><br/>
+            <div class="fadeout1">
+                <br /><br />
+            </div>
+        </div>
+
+        <div class="overlay" id="searchDiv"  style="display:none;">
+            <button type="button" title="Close" onclick="document.getElementById('searchDiv').style.display='none'" style="position:absolute; top:3; right:0;">
+                <span aria-hidden="true">&times;</span>
+                <span>Close</span>
+            </button>
+            <br/>
+            <div class="row vertical-align text-center">
+                <div class="col-md-6">
+                    <!--
+                        1. Using Html.BeginForm to transfer the data from View to Controller.
+                        2. The search_param input bar is used to record the choice of search options.
+                    -->
+                    <p class="lead fontstyle">Search beaches by name, suburb name or postcode!</p>
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "form-inline fontstyle"}))
+                    {
+                        <div class="input-group">
+                            <div class="input-group-btn search-panel">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    <span id="search_concept">Suburb Name</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#suburbName">Suburb Name</a></li>
+                                    <li><a href="#beachName">Beach Name</a></li>
+                                    <li><a href="#postcode">Postcode</a></li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="search_param" value="suburbName" id="search_param">
+                            <input id="SearchString" name="SearchString" type="text" class="form-control" size="50" placeholder="Type..." required>
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-primary" aria-label="..." onclick="getLocation()">
+                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                </button>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    }<br/>
+                </div>
+                <div class="col-md-6">
+                    <p class="lead fontstyle">Or search beaches with safety filters!</p>
+                    @using (Html.BeginForm("Search2", "Home", FormMethod.Post, new { @class = "fontstyle" }))
+                    {
+                        <!--
+                            The style for wave height options bar
+                        -->
+                        <style type="text/css">
+                            .cc-selector input {
+                                margin: 0;
+                                padding: 0;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                            }
+
+                            .cc-selector-2 input {
+                                position: absolute;
+                                z-index: 999;
+                            }
+
+                            .wave0 {
+                                background-image: url(/Content/img/wave0.jpg);
+                            }
+
+                            .wave1 {
+                                background-image: url(/Content/img/wave1.jpg);
+                            }
+
+                            .wave2 {
+                                background-image: url(/Content/img/wave2.jpg);
+                            }
+
+                            .cc-selector-2 input:active + .drinkcard-cc, .cc-selector input:active + .drinkcard-cc {
+                                opacity: .9;
+                            }
+
+                            .cc-selector-2 input:checked + .drinkcard-cc, .cc-selector input:checked + .drinkcard-cc {
+                                -webkit-filter: none;
+                                -moz-filter: none;
+                                filter: none;
+                            }
+
+                            .drinkcard-cc {
+                                cursor: pointer;
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                display: inline-block;
+                                width: 120px;
+                                height: 70px;
+                                -webkit-transition: all 100ms ease-in;
+                                -moz-transition: all 100ms ease-in;
+                                transition: all 100ms ease-in;
+                                -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+                                -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+                                filter: brightness(1.8) grayscale(1) opacity(.7);
+                                border: 1px solid #000000;
+                            }
+
+                                .drinkcard-cc:hover {
+                                    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+                                    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+                                    filter: brightness(1.2) grayscale(.5) opacity(.9);
+                                }
+                        </style>
+                        <!--
+                            Using radio input to record users' choice
+                        -->
+                        <label for="example-text-input">Swim Ability</label><br />
+                        <div class="btn-group colors" data-toggle="buttons">
+                            <label class="btn btn-primary btn-sm active">
+                                <input type="radio" name="swimLevelChoice" value="0" autocomplete="off" checked> Non Swimmer
+                            </label>
+                            <label class="btn btn-primary btn-sm">
+                                <input type="radio" name="swimLevelChoice" value="1" autocomplete="off"> Beginner
+                            </label>
+                            <label class="btn btn-primary btn-sm">
+                                <input type="radio" name="swimLevelChoice" value="2" autocomplete="off"> Strong Swimmer
+                            </label>
+                        </div>
+                        <br /><br />
+                        <label for="example-text-input">Wave Height</label><br />
+                        <div class="cc-selector">
+                            <input checked="checked" id="wave0" type="radio" name="surfLevelChoice" value="0" />
+                            <label class="drinkcard-cc wave0" for="wave0"></label>
+                            <input id="wave1" type="radio" name="surfLevelChoice" value="1" />
+                            <label class="drinkcard-cc wave1" for="wave1"></label>
+                            <input id="wave2" type="radio" name="surfLevelChoice" value="2" />
+                            <label class="drinkcard-cc wave2" for="wave2"></label>
+                        </div>
+                        <label for="example-text-input">Patrol Availability</label><br />
+                        <div class="btn-group colors" data-toggle="buttons">
+                            <label class="btn btn-primary active">
+                                <input type="radio" name="patroled" value="1" autocomplete="off" checked> Yes
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="patroled" value="0" autocomplete="off"> No
+                            </label>
+                        </div>
+                        <br /><br />
+                        <button type="submit" class="btn btn-primary btn-xl page-scroll">Search with filters</button>
+                    }<br/>
+                    <div class="fadeout1">
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+    Map for thirteen regions of Victoria which include many famous beaches
+    Function: This is the javascript for the map.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The default zoom level is 8.
+            2. The api key is included in the code. Dealing with the privacy problem later.
+            3. Using search3() function in Home Controller for searching the region name.
+-->
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
+<script>
+    var mymap = L.map('mapid').setView([-38.0020149, 144.9520108], 8);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: '',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1Ijoid2F5bmVoZSIsImEiOiJjajB5dWw4dDcwMmUzMndtdGZrZnExcmwxIn0.SWEhrOhz8ViYo6qAaYE3Jw'
+    }).addTo(mymap);
+    var polygon1 = L.polygon([
+        [-37.96152,140.96832],
+        [-38.06323,140.96558],
+        [-38.10577,141.07978],
+        [-38.16017,141.19261],
+        [-38.23371,141.2947],
+        [-38.32765,141.37894],
+        [-38.37827,141.3446],
+        [-38.41249,141.41269],
+        [-38.36978,141.44885],
+        [-38.38903,141.50665],
+        [-38.4353,141.51077],
+        [-38.44498,141.56433],
+        [-38.39611,141.58053],
+        [-38.41917,141.62476],
+        [-38.38903,141.66595],
+        [-38.32442,141.62201],
+        [-38.26191,141.74561],
+        [-38.30269,141.94385],
+        [-38.40374,142.13798],
+        [-38.40625,142.2757],
+        [-38.36966,142.36084],
+        [-38.48468,142.62296],
+        [-38.62206,142.85349],
+        [-38.63824,142.93195],
+        [-38.64047,143.02139],
+        [-38.47187, 143.02003],
+        [-38.29192, 142.47378]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon2 = L.polygon([
+        [-38.64798,143.03513],
+        [-38.50573,143.03375],
+        [-38.73373,143.6792],
+        [-38.76051,143.69156],
+        [-38.78513,143.67371],
+        [-38.80654,143.61878],
+        [-38.83917,143.59887],
+        [-38.86324,143.54874],
+        [-38.86544,143.50054],
+        [-38.83877,143.46332],
+        [-38.7961,143.41224],
+        [-38.76665,143.34289],
+        [-38.77789,143.23646],
+        [-38.73687, 143.16553],
+        [-38.68939, 143.11931]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon3 = L.polygon([
+        [-38.28347,144.34662],
+        [-38.3492,144.34662],
+        [-38.39549,144.27589],
+        [-38.44445,144.18182],
+        [-38.49117,144.08304],
+        [-38.53902,144.02117],
+        [-38.60399,143.95523],
+        [-38.65602,143.90339],
+        [-38.7048,143.83919],
+        [-38.7423,143.69156],
+        [-38.7182,143.67577],
+        [-38.60225,143.80847],
+        [-38.46784, 143.97549],
+        [-38.36764, 144.16449]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon4 = L.polygon([
+        [-38.02321,144.3425],
+        [-38.027,144.4891],
+        [-38.05458,144.48429],
+        [-38.09566,144.47674],
+        [-38.09242,144.40567],
+        [-38.12159,144.38644],
+        [-38.12916,144.40567],
+        [-38.10863,144.43588],
+        [-38.14752,144.47433],
+        [-38.14104,144.55536],
+        [-38.09134,144.62128],
+        [-38.08972,144.65904],
+        [-38.10322,144.69406],
+        [-38.12717,144.72684],
+        [-38.15111,144.74038],
+        [-38.21445,144.72427],
+        [-38.24843,144.71535],
+        [-38.27592,144.68445],
+        [-38.3006,144.61609],
+        [-38.30287,144.50455],
+        [-38.29967,144.42699],
+        [-38.34646,144.35303],
+        [-38.24691, 144.35521],
+        [-38.16235, 144.30794]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon5 = L.polygon([
+        [-37.87729,144.82109],
+        [-37.89778,144.8076],
+        [-37.91495,144.80461],
+        [-37.92985,144.80392],
+        [-37.93497,144.7783],
+        [-37.94284,144.75792],
+        [-37.94745,144.74041],
+        [-37.96748,144.71672],
+        [-37.99453,144.67897],
+        [-38.01078,144.64933],
+        [-38.0156,144.60106],
+        [-38.03349,144.58145],
+        [-38.05616,144.54032],
+        [-38.09242,144.5224],
+        [-38.09674,144.48395],
+        [-38.02398,144.49695],
+        [-37.97598,144.55912],
+        [-37.93932,144.64051],
+        [-37.901, 144.72599],
+        [-37.87885, 144.76805]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon6 = L.polygon([
+        [-37.86916,144.96889],
+        [-37.86903,145.00048],
+        [-37.84151,144.97971],
+        [-37.82416,144.92581],
+        [-37.83174,144.86347],
+        [-37.85124,144.81878],
+        [-37.87541,144.77245],
+        [-37.87472,144.84046],
+        [-37.86435,144.8676],
+        [-37.87679,144.90211],
+        [-37.86484,144.9228],
+        [-37.85549,144.91425],
+        [-37.84532,144.92595],
+        [-37.8502, 144.93973],
+        [-37.85779, 144.95632]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon7 = L.polygon([
+        [-37.87033,144.96812],
+        [-37.87019,144.99782],
+        [-37.90168,145.00511],
+        [-37.96864,145.03699],
+        [-37.97235,145.06897],
+        [-38.03349,145.1263],
+        [-38.0341,145.09387],
+        [-37.99481,145.05421],
+        [-38.00345,145.04189],
+        [-37.99832,145.02265],
+        [-37.9848,145.00992],
+        [-37.96056,145.0005],
+        [-37.94898,144.98944],
+        [-37.93306,144.9825],
+        [-37.91132, 144.97848],
+        [-37.8935, 144.98012]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon8 = L.polygon([
+        [-38.03498,145.09386],
+        [-38.03437,145.12785],
+        [-38.08107,145.1445],
+        [-38.13564,145.15137],
+        [-38.19232,145.11429],
+        [-38.19045,145.04675],
+        [-38.15013,145.09012],
+        [-38.13139, 145.10601],
+        [-38.08509, 145.10921]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon9 = L.polygon([
+        [-38.19205,145.0482],
+        [-38.19394,145.1136],
+        [-38.27161,145.04974],
+        [-38.34058,144.99069],
+        [-38.33842,144.92924],
+        [-38.30976,144.98015],
+        [-38.29946,144.97162],
+        [-38.28485,144.97407],
+        [-38.24688,145.00722],
+        [-38.23531, 145.01531],
+        [-38.21296, 145.02065]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon10 = L.polygon([
+        [-38.34206,144.99035],
+        [-38.33924,144.92796],
+        [-38.3512,144.88397],
+        [-38.36209,144.84317],
+        [-38.35727,144.80289],
+        [-38.33627,144.76479],
+        [-38.31204,144.72875],
+        [-38.30051,144.69015],
+        [-38.29734,144.64823],
+        [-38.30395,144.64291],
+        [-38.33627,144.69166],
+        [-38.36643,144.73938],
+        [-38.40303,144.78745],
+        [-38.4431,144.83654],
+        [-38.47859,144.87362],
+        [-38.50707,144.87877],
+        [-38.50304,144.94228],
+        [-38.49149,145.03601],
+        [-38.42835,145.08336],
+        [-38.40222,145.13454],
+        [-38.42234,145.23284],
+        [-38.41111, 145.24611],
+        [-38.34081, 145.22763]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon11 = L.polygon([
+        [-38.33762,145.14999],
+        [-38.33762,145.22655],
+        [-38.31364,145.21297],
+        [-38.31338,145.23514],
+        [-38.28158,145.23479],
+        [-38.25328,145.26329],
+        [-38.25759,145.32715],
+        [-38.22855,145.35591],
+        [-38.2371,145.40955],
+        [-38.22631,145.4425],
+        [-38.23926,145.47409],
+        [-38.27377,145.4837],
+        [-38.29748,145.50156],
+        [-38.34058,145.5043],
+        [-38.34273,145.53452],
+        [-38.37827,145.52902],
+        [-38.40087,145.51117],
+        [-38.39764,145.45761],
+        [-38.39871,145.41159],
+        [-38.44283,145.41229],
+        [-38.49552,145.39856],
+        [-38.48795,145.31678],
+        [-38.44911,145.33753],
+        [-38.43285,145.26627],
+        [-38.44335,145.16359],
+        [-38.52668,145.08318],
+        [-38.54284,145.1723],
+        [-38.53005,145.28464],
+        [-38.58609,145.35],
+        [-38.55857,145.40107],
+        [-38.58298,145.48124],
+        [-38.67252,145.5537],
+        [-38.70139,145.64917],
+        [-38.66051,145.72475],
+        [-38.53049,145.73236],
+        [-38.39163,145.6356],
+        [-38.27176,145.63022],
+        [-38.17113,145.54244],
+        [-38.14404, 145.32315],
+        [-38.21725, 145.1812]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon12 = L.polygon([
+        [-38.53098,145.73708],
+        [-38.65978,145.72884],
+        [-38.69339,145.784],
+        [-38.79691,145.85861],
+        [-38.92843,145.91492],
+        [-38.90172,146.00967],
+        [-38.84752,146.03288],
+        [-38.8227,146.05489],
+        [-38.87393,146.15936],
+        [-38.95247,146.21842],
+        [-39.03625,146.26099],
+        [-39.15988,146.32004],
+        [-39.1538,146.44559],
+        [-39.05225,146.50406],
+        [-38.97819,146.47842],
+        [-38.89808,146.53383],
+        [-38.80734,146.51008],
+        [-38.77443,146.62766],
+        [-38.71659,146.77048],
+        [-38.70729,146.83563],
+        [-38.40628,147.20579],
+        [-38.22143,147.20821],
+        [-38.43144,146.93163],
+        [-38.5872,146.59461],
+        [-38.58499,146.30429],
+        [-38.60106,146.13716],
+        [-38.68791, 145.97826],
+        [-38.58158, 145.89338]
+    ], { weight: 1.5 }).addTo(mymap);
+    var polygon13 = L.polygon([
+        [-38.21822,147.21542],
+        [-38.40114,147.21027],
+        [-37.96152,147.854],
+        [-37.84449,148.30444],
+        [-37.81412,149.09546],
+        [-37.80761,149.52942],
+        [-37.64503,149.78695],
+        [-37.5228,150.00732],
+        [-37.41053,149.73953],
+        [-37.51204,149.55483],
+        [-37.62212,149.32618],
+        [-37.63639,148.2708],
+        [-37.82382, 147.65523],
+        [-37.98016, 147.37765]
+    ], { weight: 1.5 }).addTo(mymap);
+    polygon3.bindPopup("<a href=\"/Home/Search3?searchString=Great Ocean Road\" style=\"font-family:Open Sans\"><img src=\"/Content/img/9.jpg\" alt=\"Lights\" style=\"width:100%\">Great Ocean Road</a>");
+    polygon4.bindPopup("<a href=\"/Home/Search3?searchString=Geelong & Sorrounded\" style=\"font-family:Open Sans\"><img src=\"/Content/img/40.jpg\" alt=\"Lights\" style=\"width:100%\">Geelong & Sorrounded</a>").openPopup();
+    polygon5.bindPopup("<a href=\"/Home/Search3?searchString=North West Near Melbourne\" style=\"font-family:Open Sans\"><img src=\"/Content/img/59.jpg\" alt=\"Lights\" style=\"width:100%\">North West Near Melbourne</a>");
+    polygon6.bindPopup("<a href=\"/Home/Search3?searchString=Melbourne City & Sorrounded\" style=\"font-family:Open Sans\"><img src=\"/Content/img/66.jpg\" alt=\"Lights\" style=\"width:100%\">Melbourne City & Sorrounded</a>");
+    polygon7.bindPopup("<a href=\"/Home/Search3?searchString=South East Near Melbourne\" style=\"font-family:Open Sans\"><img src=\"/Content/img/79.jpg\" alt=\"Lights\" style=\"width:100%\">South East Near Melbourne</a>");
+    polygon8.bindPopup("<a href=\"/Home/Search3?searchString=Frankston & Sorrounded\" style=\"font-family:Open Sans\"><img src=\"/Content/img/92.jpg\" alt=\"Lights\" style=\"width:100%\">Frankston & Sorrounded</a>");
+    polygon9.bindPopup("<a href=\"/Home/Search3?searchString=Mornington Peninsula\" style=\"font-family:Open Sans\"><img src=\"/Content/img/105.jpg\" alt=\"Lights\" style=\"width:100%\">Mornington Peninsula</a>");
+    polygon10.bindPopup("<a href=\"/Home/Search3?searchString=Western Port of VIC\" style=\"font-family:Open Sans\"><img src=\"/Content/img/115.jpg\" alt=\"Lights\" style=\"width:100%\">Western Port of VIC</a>");
+    polygon11.bindPopup("<a href=\"/Home/Search3?searchString=Phillip Island\" style=\"font-family:Open Sans\"><img src=\"/Content/img/149.jpg\" alt=\"Lights\" style=\"width:100%\">Phillip Island</a>");
+    polygon1.bindPopup("<a href=\"/Home/Search3?searchString=South West Coast\" style=\"font-family:Open Sans\"><img src=\"/Content/img/159.jpg\" alt=\"Lights\" style=\"width:100%\">South West Coast</a>");
+    polygon13.bindPopup("<a href=\"/Home/Search3?searchString=East Gippsland\" style=\"font-family:Open Sans\"><img src=\"/Content/img/164.jpg\" alt=\"Lights\" style=\"width:100%\">East Gippsland</a>");
+    polygon12.bindPopup("<a href=\"/Home/Search3?searchString=Gippsland\" style=\"font-family:Open Sans\"><img src=\"/Content/img/172.jpg\" alt=\"Lights\" style=\"width:100%\">Gippsland</a>");
+    polygon2.bindPopup("<a href=\"/Home/Search3?searchString=Barwon\" style=\"font-family:Open Sans\"><img src=\"/Content/img/169.jpg\" alt=\"Lights\" style=\"width:100%\">Barwon</a>");
+    var searchButton = L.easyButton('fa-search searchButton', function (btn, map) {
+        document.getElementById('flagDiv').style.display = "none";
+        document.getElementById('searchDiv').style.display = "block";
+    });
+    searchButton.options.position = "topright";
+    searchButton.addTo(mymap);
+
+    var flagButton = L.easyButton('fa-flag flagButton', function (btn, map) {
+        document.getElementById('searchDiv').style.display = "none";
+        document.getElementById('flagDiv').style.display = "block";
+    });
+    flagButton.options.position = "topright";
+    flagButton.addTo(mymap);
+</script>

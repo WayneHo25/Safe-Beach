@@ -1,0 +1,95 @@
+﻿<!--
+   PROGRAM:   Safe Beach Tips Page
+   AUTHOR:    Wenzhi He
+   LOGON ID:  No Authentication
+   DUE DATE:  07-May-2017
+
+   FUNCTION:  Establishing the tips page of Safe Beach website.
+              1. Telling users some safety knowledge.
+              2. Rip current, first aid and flags and signs information.
+
+   INPUT:     None
+
+   OUTPUT:    None
+
+   NOTES:     this page is using layout html which include a navigation bar and footer.
+-->
+<!--
+    The title of the page
+-->
+@{
+    ViewBag.Title = "Safety Tips";
+}
+
+<h1 class="text-center" style="font-size:50px; font-family:Great Vibes;">@ViewBag.Title</h1>
+
+<!--
+    Function: This is the content of tips page.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The font family of header is Great Vibes while the other's is Open Sans.
+           2. I use some youtube videos to display the information.
+-->
+<div class="container">
+    <div class="row" style="font-family:Open Sans;">
+        <!--
+            Display the safety knowledge to users in three sections.
+        -->
+        <div class="col-sm-12">
+            <div id="section3">
+                <h1 class="text-center">Flags and Signs</h1>
+                <p style="font-size:18px;">
+                    <b>Patrolled beach flags</b><br />
+                    1. Swimming area boundary flag<br />
+                    <img src="~/Content/img/flag1.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    Meaning: Recommended swimming area with lifeguard supervision<br /><br />
+                    The area is protected by lifeguards. These flags may be used in pairs spaced apart to indicate a designated area or zone along a beach or waterfront that is most closely supervised or patrolled by qualified lifeguards, and where swimming and/or body surfing is permitted. These flags may be used singly to indicate that swimming is permitted in front of the area where the flag is flown and that the area is under the supervision of a qualified person.<br /><br />
+                    2. Board riding area boundary flag<br />
+                    <img src="~/Content/img/flag2.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    Meaning: Watercraft area<br /><br />
+                    These flags may be used in pairs spaced apart to indicate a designated area or zone along a beach or waterfront that is used by those with surfboards and other non-powered watercraft.<br /><br />
+                    3. No swimming flag<br />
+                    <img src="~/Content/img/flag3.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    Meaning: High Hazard<br /><br />
+                    Rough conditions such as strong surf and/or currents are present. All swimmers are discouraged from entering the water. Those entering the water should take great care.<br /><br />
+                    4. Shark alarm flag
+                    <img src="~/Content/img/flag4.gif" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    The Bondi Surf Club site explains that a flag quartered red and white indicates a shark alarm. Jonathan Dixon, 21 Mar 2005<br /><br />
+                    <b>Warning Sign</b><br />
+                    You can also find other beach warning signals with different messages for specific beaches and coastal areas:<br />
+                    <img src="~/Content/img/sign1.png" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    <img src="~/Content/img/sign2.png" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    <img src="~/Content/img/sign3.png" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    <img src="~/Content/img/sign4.png" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                    <img src="~/Content/img/sign5.png" class="img-responsive img-rounded center-block grayscale" alt=""><br />
+                </p>
+                <!--
+                    This style is used to make the youtube video responsive.
+                -->
+                <style type="text/css">
+                    .video-container {
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        padding-top: 30px;
+                        height: 0;
+                        overflow: hidden;
+                    }
+
+                        .video-container iframe, .video-container object, .video-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                </style>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AKGIoeNoLMI" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

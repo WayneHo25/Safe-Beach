@@ -1,0 +1,131 @@
+﻿<!--
+   PROGRAM:   Safe Beach Null Search Result Page
+   AUTHOR:    Wenzhi He
+   LOGON ID:  No Authentication
+   DUE DATE:  07-May-2017
+
+   FUNCTION:  Establishing the null search result page of Safe Beach website.
+              1. Telling users the search result is empty according to their input.
+              2. Listing some recommended beaches at the buttom
+
+   INPUT:     choice of a certain beach
+
+   OUTPUT:    the detail page of a certain beach
+
+   NOTES:     this page is using layout html which include a navigation bar and footer.
+-->
+
+<!--
+    The title of the page
+-->
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--
+    Display the null search result to users.
+-->
+<h1 class="text-center" style="font-size:50px; font-family:Great Vibes;">Search Result</h1>
+<h3 class="text-center" style="font-size:18px; font-family:Open Sans;">Sorry, this search result does not yield any beaches.</h3>
+<h4 class="text-center" style="font-size:18px; font-family:Open Sans;">However, here are some recommended beaches divided into nine geographical regions.</h4>
+<br/><br/>
+
+<!--
+    Display some recommended beaches to users.
+-->
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "Great Ocean Road" })">
+                <img src="~/Content/img/9.jpg" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p>Great Ocean Road</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "Geelong & Sorrounded" })">
+                <img src="~/Content/img/40.jpg" alt="Nature" style="width:100%">
+                <div class="caption">
+                    <p>Geelong & Sorrounded</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "North West Near Melbourne" })">
+                <img src="~/Content/img/59.jpg" alt="Fjords" style="width:100%">
+                <div class="caption">
+                    <p>North West Near Melbourne</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "Melbourne City & Sorrounded" })">
+                <img src="~/Content/img/66.jpg" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p>Melbourne City & Sorrounded</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "South East Near Melbourne" })">
+                <img src="~/Content/img/79.jpg" alt="Nature" style="width:100%">
+                <div class="caption">
+                    <p>South East Near Melbourne</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "Frankston & Sorrounded" })">
+                <img src="~/Content/img/92.jpg" alt="Fjords" style="width:100%">
+                <div class="caption">
+                    <p>Frankston & Sorrounded</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "Mornington Peninsula" })">
+                <img src="~/Content/img/105.jpg" alt="Fjords" style="width:100%">
+                <div class="caption">
+                    <p>Mornington Peninsula</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "Western Port of VIC" })">
+                <img src="~/Content/img/115.jpg" alt="Fjords" style="width:100%">
+                <div class="caption">
+                    <p>Western Port of VIC</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Search3", "Home", new { searchString = "phillip island" })">
+                <img src="~/Content/img/149.jpg" alt="Fjords" style="width:100%">
+                <div class="caption">
+                    <p>Phillip Island</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

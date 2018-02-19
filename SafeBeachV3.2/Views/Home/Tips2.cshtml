@@ -1,0 +1,84 @@
+﻿<!--
+   PROGRAM:   Safe Beach Tips Page
+   AUTHOR:    Wenzhi He
+   LOGON ID:  No Authentication
+   DUE DATE:  07-May-2017
+
+   FUNCTION:  Establishing the tips page of Safe Beach website.
+              1. Telling users some safety knowledge.
+              2. Rip current, first aid and flags and signs information.
+
+   INPUT:     None
+
+   OUTPUT:    None
+
+   NOTES:     this page is using layout html which include a navigation bar and footer.
+-->
+<!--
+    The title of the page
+-->
+@{
+    ViewBag.Title = "Safety Tips";
+}
+
+<h1 class="text-center" style="font-size:50px; font-family:Great Vibes;">@ViewBag.Title</h1>
+
+<!--
+    Function: This is the content of tips page.
+
+    Input: see above
+
+    Output: see above
+
+    Notes: 1. The font family of header is Great Vibes while the other's is Open Sans.
+           2. I use some youtube videos to display the information.
+-->
+<div class="container">
+    <div class="row" style="font-family:Open Sans;">
+        <!--
+            Display the safety knowledge to users in three sections.
+        -->
+        <div class="col-sm-12">
+            <div id="section2">
+                <h1 class="text-center">First Aid</h1>
+                <p style="font-size:18px;">
+                    <b>Learn the first aid method of DRSABCD</b><br />
+                    First aid is as easy as ABC – airway, breathing and CPR (cardiopulmonary resuscitation). In any situation, apply the DRSABCD Action Plan.<br /><br />
+                    DRSABCD stands for:<br />
+                    1. Danger – always check the danger to you, any bystanders and then the injured or ill person. Make sure you do not put yourself in danger when going to the assistance of another person.<br /><br />
+                    2. Response – is the person conscious? Do they respond when you talk to them, touch their hands or squeeze their shoulder?<br /><br />
+                    3. Send for help – call triple zero (000). Don’t forget to answer the questions asked by the operator.<br /><br />
+                    4. Airway – Is the person’s airway clear? Is the person breathing?<br /><br />
+                    If the person is responding, they are conscious and their airway is clear, assess how you can help them with any injury.<br /><br />
+                    If the person is not responding and they are unconscious, you need to check their airway by opening their mouth and having a look inside. If their mouth is clear, tilt their head gently back (by lifting their chin) and check for breathing. If the mouth is not clear, place the person on their side, open their mouth and clear the contents, then tilt the head back and check for breathing.<br /><br />
+                    5. Breathing – check for breathing by looking for chest movements (up and down). Listen by putting your ear near to their mouth and nose. Feel for breathing by putting your hand on the lower part of their chest. If the person is unconscious but breathing, turn them onto their side, carefully ensuring that you keep their head, neck and spine in alignment. Monitor their breathing until you hand over to the ambulance officers.<br /><br />
+                    6. CPR (cardiopulmonary resuscitation) – if an adult is unconscious and not breathing, make sure they are flat on their back and then place the heel of one hand in the centre of their chest and your other hand on top. Press down firmly and smoothly (compressing to one third of their chest depth) 30 times. Give two breaths. To get the breath in, tilt their head back gently by lifting their chin. Pinch their nostrils closed, place your open mouth firmly over their open mouth and blow firmly into their mouth. Keep going with the 30 compressions and two breaths at the speed of approximately five repeats in two minutes until you hand over to the ambulance officers or another trained person, or until the person you are resuscitating responds. The method for CPR for children under eight and babies is very similar and you can learn these skills in a CPR course.<br /><br />
+                    7. Defibrillator – for unconscious adults who are not breathing, apply an automated external defibrillator (AED) if one is available. They are available in many public places, clubs and organisations. An AED is a machine that delivers an electrical shock to cancel any irregular heart beat (arrhythmia), in an effort get the normal heart beating to re-establish itself. The devices are very simple to operate. Just follow the instructions and pictures on the machine, and on the package of the pads, as well as the voice prompts. If the person responds to defibrillation, turn them onto their side and tilt their head to maintain their airway. Some AEDs may not be suitable for children.<br /><br />
+                </p>
+                <!--
+                    This style is used to make the youtube video responsive.
+                -->
+                <style type="text/css">
+                    .video-container {
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        padding-top: 30px;
+                        height: 0;
+                        overflow: hidden;
+                    }
+
+                        .video-container iframe, .video-container object, .video-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                </style>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/iTgkGflUTk0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿@model SafeBeachV3._2.Models.BeachInfoV3_1
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BeachInfoV3_1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.beachName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beachName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.beachAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beachAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.beachSuburb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beachSuburb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patrol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patrol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patrolTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patrolTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.surfLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surfLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.swimLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.swimLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.drowning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.drowning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.waterQuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.waterQuality)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
