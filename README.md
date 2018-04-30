@@ -1,7 +1,7 @@
 # Safe-Beach
 A charity website about beach safety in Victoria, a graduate project in Monash University
 
-Website URL: http://safebeach.tk
+Website URL: http://safebeach.tk (Invalid now.)
 
 ![Website Index](https://github.com/wayneho25/safe-beach/raw/master/index.png)
 
